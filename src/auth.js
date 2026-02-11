@@ -1,11 +1,11 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google"
-import GitHub from "next-auth/providers/github"
+// import GitHub from "next-auth/providers/github"  // Descomentar cuando tengas AUTH_GITHUB_ID y AUTH_GITHUB_SECRET
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/lib/prisma"
 
 const options = {
-    providers: [Google, GitHub],
+    providers: [Google],
     adapter: PrismaAdapter(prisma),
     session: { strategy: "jwt" },
     pages: {
