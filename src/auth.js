@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
-import Google from "@auth/core/providers/github"
-import GitHub from "@auth/core/providers/google"
+import Google from "next-auth/providers/google"
+import GitHub from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/lib/prisma"
 
@@ -20,9 +20,9 @@ const options = {
             return session
         },
 
-        async jwt({ token }) {  
+        async jwt({ token }) {
             if (!token.sub) return token;
-            
+
             const user = await prisma.user.findUnique({
                 where: {
                     id: token.sub
